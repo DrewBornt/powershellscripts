@@ -1,3 +1,3 @@
-# PowerShellScripts
+# Power Shell Scripts
 
 A collection of Powershell scripts I've accumulated and used in my IT career.
