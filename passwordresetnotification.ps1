@@ -1,36 +1,3 @@
-<# 
-.Synopsis 
-   Script to Automated Email Reminders when Users Passwords due to Expire. 
-.DESCRIPTION 
-   Script to Automated Email Reminders when Users Passwords due to Expire. 
-   Robert Pearman / WindowsServerEssentials.com 
-   Version 2.9 August 2018 
-   Requires: Windows PowerShell Module for Active Directory 
-   For assistance and ideas, visit the TechNet Gallery Q&A Page. http://gallery.technet.microsoft.com/Password-Expiry-Email-177c3e27/view/Discussions#content 
- 
-   Alternativley visit my youtube channel, https://www.youtube.com/robtitlerequired 
- 
-   Videos are available to cover most questions, some videos are based on the earlier version which used static variables, however most of the code 
-   can still be applied to this version, for example for targeting groups, or email design. 
- 
-   Please take a look at the existing Q&A as many questions are simply repeating earlier ones, with the same answers! 
- 
- 
-.EXAMPLE 
-  PasswordChangeNotification.ps1 -smtpServer mail.domain.com -expireInDays 21 -from "IT Support <support@domain.com>" -Logging -LogPath "c:\logFiles" -testing -testRecipient support@domain.com 
-   
-  This example will use mail.domain.com as an smtp server, notify users whose password expires in less than 21 days, send mail from support@domain.com 
-  Logging is enabled, log path is c:\logfiles 
-  Testing is enabled, and test recipient is support@domain.com 
- 
-.EXAMPLE 
-  PasswordChangeNotification.ps1 -smtpServer mail.domain.com -expireInDays 21 -from "IT Support <support@domain.com>" -reportTo myaddress@domain.com -interval 1,2,5,10,15 
-   
-  This example will use mail.domain.com as an smtp server, notify users whose password expires in less than 21 days, send mail from support@domain.com 
-  Report is enabled, reports sent to myaddress@domain.com 
-  Interval is used, and emails will be sent to people whose password expires in less than 21 days if the script is run, with 15, 10, 5, 2 or 1 days remaining untill password expires. 
- 
-#> 
 param( 
     # $smtpServer Enter Your SMTP Server Hostname or IP Address 
     [Parameter(Mandatory=$True,Position=0)] 
