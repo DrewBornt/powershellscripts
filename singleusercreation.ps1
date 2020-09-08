@@ -13,12 +13,12 @@ New-ADUser -Name $fullname `
 -DisplayName $fullname `
 -GivenName $firstname `
 -Surname $lastname `
--EmailAddress "$username@home.local" `
+-EmailAddress "$username@DOMAIN" `
 -SamAccountName $username `
--Path "OU=_Domain Users, DC=HOME, DC=LOCAL" `
+-Path "OU=OUNAME, DC=DOMAIN, DC=DOMAIN" `
 -Enabled $True `
 -ChangePasswordAtLogon $True `
--UserPrincipalName "$username@home.local" `
+-UserPrincipalName "$username@DOMAIN" `
 -AccountPassword $password
 
 Foreach ($group in $groups)
@@ -33,13 +33,13 @@ Foreach ($group in $groups)
 
 New-Item `
 -ItemType "directory" `
--Path "\\FileShare01\c`$\Shares\$username"
+-Path "\\SERVERNAME\c`$\Shares\$username"
 
 New-Item `
 -ItemType "directory" `
--Path "\\FileShare01\c`$\Shares\Scans\$username"
+-Path "\\SERVERNAME\c`$\Shares\Scans\$username"
 
-New-SmbShare -Name "$username" -CimSession FileShare01 -Path "c:\Shares\$username"
+New-SmbShare -Name "$username" -CimSession SERVERNAME -Path "c:\Shares\$username"
 
 
 
